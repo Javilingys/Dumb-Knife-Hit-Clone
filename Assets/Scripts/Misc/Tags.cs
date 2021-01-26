@@ -6,7 +6,7 @@ namespace KnifeHitClone.Misc
 {
     public static class Tags
     {
-        public static readonly string wheel = "Wheel";
-        public static readonly string knife = "Knife";
+        public static readonly string WHEEL = "Wheel";
+        public static readonly string KNIFE = "Knife";
     }
 }

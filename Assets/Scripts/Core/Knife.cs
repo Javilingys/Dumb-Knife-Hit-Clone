@@ -1,3 +1,4 @@
+using KnifeHitClone.Misc;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,9 +32,10 @@ namespace KnifeHitClone.Core
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.CompareTag("Wheel"))
+            if (collision.gameObject.CompareTag(Tags.WHEEL))
             {
                 StopKnife();
+                HitWheel(collision.gameObject.transform);
             }
         }
         #endregion
@@ -57,6 +59,11 @@ namespace KnifeHitClone.Core
                 rigidBody.isKinematic = true;
                 isHit = true;
             }
+        }
+
+        private void HitWheel(Transform wheel)
+        {
+            gameObject.transform.SetParent(wheel);
         }
         #endregion
     }
