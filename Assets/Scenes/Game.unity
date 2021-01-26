@@ -446,6 +446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1050174737}
   - component: {fileID: 1050174738}
+  - component: {fileID: 1050174739}
   m_Layer: 0
   m_Name: Wheel
   m_TagString: Wheel
@@ -484,6 +485,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3.6
+--- !u!114 &1050174739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050174736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6edb1b90eade81d42a7e72c157547b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1096377790
 GameObject:
   m_ObjectHideFlags: 0
