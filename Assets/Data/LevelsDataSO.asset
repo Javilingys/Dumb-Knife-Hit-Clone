@@ -15,7 +15,25 @@ MonoBehaviour:
   levels:
   - levelName: Level 1
     knifeCount: 1
-    chanceOfAppleSpawn: 0.25
     wheelData:
-      speed: 20
+      speed: 50
       wheelSprite: {fileID: 21300000, guid: 778e4a945730fb44bb6d9a3175afcd64, type: 3}
+      chanceOfAppleSpawn: 0.25
+      knifesSpawnCount: 3
+      isBoss: 0
+      anglesForAppleSpawn:
+      - 45
+      - 135
+      - 225
+      - 315
+      anglesForKnifeSpawn:
+      - 20
+      - 90
+      - 60
+      - 150
+      - 180
+      - 205
+      - 240
+      - 265
+      - 295
+      - 350
