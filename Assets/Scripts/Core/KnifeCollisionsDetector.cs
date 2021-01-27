@@ -16,13 +16,6 @@ namespace KnifeHitClone.Core
         [field: SerializeField]
         public UnityEvent onAppleHit { get; set; }
 
-        private Collider2D myCollider;
-
-        private void Awake()
-        {
-            myCollider = GetComponent<Collider2D>();
-        }
-
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag(Tags.WHEEL))
