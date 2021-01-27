@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+[System.Serializable]
+public class Level
 {
+    public int knifeCount = 1;
 
 }
