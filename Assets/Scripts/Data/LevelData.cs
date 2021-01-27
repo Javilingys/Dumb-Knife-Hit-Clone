@@ -1,12 +1,15 @@
 using UnityEngine;
 
-[System.Serializable]
-public class LevelData
+namespace KnifeHitClone.Data
 {
-    // For Editor
-    public string levelName;
-    [Range(1, 9)]
-    public int knifeCount;
+    [System.Serializable]
+    public class LevelData
+    {
+        // For Editor
+        public string levelName;
+        [Range(1, 9)]
+        public int knifeCount;
 
-    public WheelData wheelData;
+        public WheelData wheelData;
+    }
 }

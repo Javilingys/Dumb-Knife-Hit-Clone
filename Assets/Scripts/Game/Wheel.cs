@@ -1,110 +1,134 @@
+using KnifeHitClone.Data;
 using KnifeHitClone.Misc;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Wheel : MonoBehaviour
+namespace KnifeHitClone.Game
 {
-    private WheelData wheelData;
-
-    [Header("Prefabs")]
-    [SerializeField]
-    private Knife knifePrefab;
-    [SerializeField]
-    private Transform applePrefab;
-
-    [Header("Parents For Prefabs")]
-    [SerializeField]
-    private Transform knifeParent;
-    [SerializeField]
-    private Transform appleParent;
-
-    [Header("Inner Components")]
-    [SerializeField]
-    private WheelRenderer wheelRenderer;
-
-    private List<Knife> knifes;
-
-    #region Unity Methods
-    private void Awake()
+    public class Wheel : MonoBehaviour
     {
-        knifes = new List<Knife>();
-    }
+        private WheelData wheelData;
 
-    private void Update()
-    {
-        RotateWheel();
-    }
-    #endregion
+        [Header("Prefabs")]
+        [SerializeField]
+        private Knife knifePrefab;
+        [SerializeField]
+        private Transform applePrefab;
 
-    #region Public Methods
-    public void InitWheel(WheelData wheelData)
-    {
-        this.wheelData = wheelData;
-        wheelRenderer.SetSprite(wheelData.wheelSprite);
-        SpawnApples();
-        SpawnKnifes();
-    }
-    #endregion
+        [Header("Parents For Prefabs")]
+        [SerializeField]
+        private Transform knifeParent;
+        [SerializeField]
+        private Transform appleParent;
 
-    #region Private Methods
-    private void SpawnApples()
-    {
-        if (wheelData.chanceOfAppleSpawn > Random.value)
+        [Header("Inner Components")]
+        [SerializeField]
+        private AvatarRenderer wheelRenderer;
+
+        private List<Knife> knifes;
+
+        #region Unity Methods
+        private void Awake()
         {
-            Transform apple = Instantiate(applePrefab, appleParent);
-            float wheelRadius = GetComponent<CircleCollider2D>().radius;
-            float appleRadius = apple.gameObject.GetComponent<CircleCollider2D>().radius;
-
-            float randomAngle = wheelData.anglesForAppleSpawn[Random.Range(0, wheelData.anglesForAppleSpawn.Length)];
-
-            Vector2 offset = Utils.GetVectorFromAngle(randomAngle) * (wheelRadius + appleRadius);
-
-            apple.localPosition = (Vector2)appleParent.localPosition + offset;
-            apple.localRotation = Quaternion.Euler(0f, 0f, -randomAngle + 0f);
+            knifes = new List<Knife>();
         }
-    }
 
-    // TODO: off control of this knifes
-    private void SpawnKnifes()
-    {
-        HashSet<float> uniqueAngles = new HashSet<float>();
-        float[] angles = new float[wheelData.knifesSpawnCount];
-
-        for (int i = 0; i < wheelData.anglesForKnifeSpawn.Length; i++)
+        private void Update()
         {
-            float randomAngle = wheelData.anglesForKnifeSpawn[Random.Range(0, wheelData.anglesForKnifeSpawn.Length)];
-            uniqueAngles.Add(randomAngle);
-            if (uniqueAngles.Count == wheelData.knifesSpawnCount)
+            RotateWheel();
+        }
+        #endregion
+
+        #region Public Methods
+        public void InitWheel(WheelData wheelData)
+        {
+            this.wheelData = wheelData;
+            wheelRenderer.SetSprite(wheelData.wheelSprite);
+            SpawnApples();
+            SpawnKnifes();
+        }
+
+        // Call from UnityEvent on the KnifeCollisionDetector component
+        public void KnifeHit(Knife knife)
+        {
+            knife.StopKnife();
+            knife.transform.SetParent(knifeParent);
+        } 
+        #endregion
+
+        #region Private Methods
+        private void SpawnApples()
+        {
+            // if chance (0.25 for exmaple) of spawn greater than value from 0 to 1
+            if (wheelData.chanceOfAppleSpawn > Random.value)
             {
-                uniqueAngles.CopyTo(angles);
-                break;
+                // Instantiate prefab
+                Transform apple = Instantiate(applePrefab, appleParent);
+                // Get a wheel radius from Circle Collider(!)
+                float wheelRadius = GetComponent<CircleCollider2D>().radius;
+                // Get an apple radius
+                float appleRadius = apple.gameObject.GetComponent<CircleCollider2D>().radius;
+
+                // Get random angle from array inside WheelData in Scriptable Object
+                float randomAngle = wheelData.anglesForAppleSpawn[Random.Range(0, wheelData.anglesForAppleSpawn.Length)];
+
+                // Offset from center to point of spawn
+                Vector2 offset = Utils.GetVectorFromAngle(randomAngle) * (wheelRadius + appleRadius);
+
+                // position
+                apple.localPosition = (Vector2)appleParent.localPosition + offset;
+                // rotation
+                apple.localRotation = Quaternion.Euler(0f, 0f, -randomAngle + 0f);
             }
         }
 
-        for (int i = 0; i < wheelData.knifesSpawnCount; i++)
+        private void SpawnKnifes()
         {
-            Knife knife = Instantiate(knifePrefab, knifeParent);
-            BoxCollider2D knifeCollider = knife.gameObject.GetComponent<BoxCollider2D>();
-            float wheelRadius = GetComponent<CircleCollider2D>().radius;
-            float halfHeight = knifeCollider.size.y / 3;
+            // Hashset for delete duplicates
+            HashSet<float> uniqueAngles = new HashSet<float>();
+            // final array which will contain unique random angles. Size = count of knifes which will spawn
+            float[] angles = new float[wheelData.knifesSpawnCount];
 
-            float angle = angles[i];
+            // Loop for get unique random angles
+            for (int i = 0; i < wheelData.anglesForKnifeSpawn.Length; i++)
+            {
+                float randomAngle = wheelData.anglesForKnifeSpawn[Random.Range(0, wheelData.anglesForKnifeSpawn.Length)];
+                uniqueAngles.Add(randomAngle);
+                if (uniqueAngles.Count == wheelData.knifesSpawnCount)
+                {
+                    uniqueAngles.CopyTo(angles);
+                    break;
+                }
+            }
 
-            Vector2 offset = Utils.GetVectorFromAngle(angle) * (wheelRadius + halfHeight);
+            // instnatiate knifes
+            for (int i = 0; i < wheelData.knifesSpawnCount; i++)
+            {
+                Knife knife = Instantiate(knifePrefab, knifeParent);
+                BoxCollider2D knifeCollider = knife.gameObject.GetComponent<BoxCollider2D>();
+                float wheelRadius = GetComponent<CircleCollider2D>().radius;
+                float halfHeight = knifeCollider.size.y / 3;
 
-            knife.transform.localPosition = (Vector2)appleParent.localPosition + offset;
-            knife.transform.localRotation = Quaternion.Euler(0f, 0f, -angle + 180f);
+                float angle = angles[i];
 
-            knifes.Add(knife);
-            knife.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
-        } 
+                Vector2 offset = Utils.GetVectorFromAngle(angle) * (wheelRadius + halfHeight);
+
+                knife.transform.localPosition = (Vector2)appleParent.localPosition + offset;
+                knife.transform.localRotation = Quaternion.Euler(0f, 0f, -angle + 180f);
+
+                // disable behaviour of knife
+                knife.IsHit = true;
+                knifes.Add(knife);
+                knife.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+            }
+        }
+
+        private void RotateWheel()
+        {
+            transform.Rotate(new Vector3(0, 0, wheelData.speed * Time.deltaTime));
+        }
+        #endregion
     }
-
-    private void RotateWheel()
-    {
-        transform.Rotate(new Vector3(0, 0, wheelData.speed * Time.deltaTime));
-    }
-    #endregion
 }

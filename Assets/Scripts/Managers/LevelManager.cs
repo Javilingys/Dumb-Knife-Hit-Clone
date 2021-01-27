@@ -2,37 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using KnifeHitClone.Misc;
+using KnifeHitClone.Game;
+using KnifeHitClone.Data;
 
-public class LevelManager : SingletonMonobehaviour<LevelManager>
+namespace KnifeHitClone.Managers
 {
-    [SerializeField]
-    private LevelsDataSetSO levelsDataSet = null;
-
-    private WheelSpawner wheelSpawner;
-
-    #region Unity Methods
-    protected override void Awake()
+    public class LevelManager : SingletonMonobehaviour<LevelManager>
     {
-        base.Awake();
-        if (Instance == this)
+        [SerializeField]
+        private LevelsDataSetSO levelsDataSet = null;
+
+        private WheelSpawner wheelSpawner;
+
+        #region Unity Methods
+        protected override void Awake()
         {
-            wheelSpawner = FindObjectOfType<WheelSpawner>();
+            base.Awake();
+            if (Instance == this)
+            {
+                wheelSpawner = FindObjectOfType<WheelSpawner>();
+            }
         }
-    }
 
-    private void Start()
-    {
-        StartFirstLevel();
-    }
-    #endregion
+        private void Start()
+        {
+            StartFirstLevel();
+        }
+        #endregion
 
-    #region Public Methods
-    public void StartFirstLevel()
-    {
-        wheelSpawner.SpawnWheel(levelsDataSet.GetWheelDataByIndex(0));
-    }
-    #endregion
+        #region Public Methods
+        public void StartFirstLevel()
+        {
+            wheelSpawner.SpawnWheel(levelsDataSet.GetWheelDataByIndex(0));
+        }
+        #endregion
 
-    #region Private Methods
-    #endregion
+        #region Private Methods
+        #endregion
+    }
 }

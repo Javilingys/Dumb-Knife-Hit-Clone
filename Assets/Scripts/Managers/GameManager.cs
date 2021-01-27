@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using KnifeHitClone.Misc;
 
-public class GameManager : SingletonMonobehaviour<GameManager>
+namespace KnifeHitClone.Managers
 {
+    public class GameManager : SingletonMonobehaviour<GameManager>
+    {
 
+    }
 }

@@ -1,17 +1,21 @@
+using KnifeHitClone.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WheelSpawner : MonoBehaviour
+namespace KnifeHitClone.Game
 {
-    [SerializeField]
-    private Transform spawnPoint;
-    [SerializeField]
-    private Wheel prefab;
-
-    public void SpawnWheel(WheelData wheelData)
+    public class WheelSpawner : MonoBehaviour
     {
-        Wheel wheel = Instantiate(prefab);
-        wheel.InitWheel(wheelData);
+        [SerializeField]
+        private Transform spawnPoint;
+        [SerializeField]
+        private Wheel prefab;
+
+        public void SpawnWheel(WheelData wheelData)
+        {
+            Wheel wheel = Instantiate(prefab);
+            wheel.InitWheel(wheelData);
+        }
     }
 }

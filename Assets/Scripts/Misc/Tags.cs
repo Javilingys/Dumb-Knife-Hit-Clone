@@ -8,5 +8,6 @@ namespace KnifeHitClone.Misc
     {
         public static readonly string WHEEL = "Wheel";
         public static readonly string KNIFE = "Knife";
+        public static readonly string APPLE = "Apple";
     }
 }
