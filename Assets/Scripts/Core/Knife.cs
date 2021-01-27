@@ -6,33 +6,44 @@ using UnityEngine;
 
 namespace KnifeHitClone.Core
 {
-    [RequireComponent(typeof(Rigidbody2D))]
     public class Knife : MonoBehaviour
     {
         [SerializeField]
         private float speed = 2f;
 
-        private Rigidbody2D rigidBody = null;
+        public Rigidbody2D rigidBody = null;
         /// <summary>
         /// If player launched knife = true.
         /// </summary>
-        private bool wasLaunch = false;
+        private bool isReleased = false;
         /// <summary>
         /// If Knife hitted something = true
         /// </summary>
         private bool isHit = false;
 
-        #region Unity Functions
-        private void Awake()
-        {
-            rigidBody = GetComponent<Rigidbody2D>();
-        }
+        public bool IsReleased { get => isReleased; set => isReleased = value; }
+        public bool IsHit { get => isHit; set => isHit = value; }
 
+        #region Unity Functions
         private void Update()
         {
             if (Input.GetMouseButtonDown(0))
             {
                 LaunchKnife();
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag(Tags.WHEEL) && !isHit)
+            {
+                HitWheel(collision.transform);
+            }
+            else if (collision.gameObject.CompareTag(Tags.KNIFE) && !isHit && IsReleased)
+            {
+                transform.SetParent(collision.transform);
+                rigidBody.velocity = Vector2.zero;
+                rigidBody.isKinematic = true;
             }
         }
         #endregion
@@ -44,8 +55,7 @@ namespace KnifeHitClone.Core
         /// <param name="wheel">trnasform wheel for SetParent(wheel)</param>
         public void HitWheel(Transform wheel)
         {
-            StopKnife();
-            gameObject.transform.SetParent(wheel);
+            wheel.gameObject.GetComponent<Wheel>().KnifeHit(this);
         }
         #endregion
 
@@ -56,11 +66,11 @@ namespace KnifeHitClone.Core
         private void LaunchKnife()
         {
             // If knife already was launched - return
-            if (wasLaunch == true) return;
+            if (IsReleased == true) return;
             // Set vertical speed of our knife
             rigidBody.AddForce(new Vector2(0, 1f * speed), ForceMode2D.Impulse);
             // Mark knife as launched
-            wasLaunch = true;
+            IsReleased = true;
         }
 
         /// <summary>
@@ -68,12 +78,12 @@ namespace KnifeHitClone.Core
         /// </summary>
         public void StopKnife()
         {
-            if (wasLaunch && !isHit)
+            if (IsReleased && !IsHit)
             {
                 rigidBody.velocity = Vector2.zero;
                 rigidBody.isKinematic = true;
                 // Stop knife also if knife hit something, therefore set isHit = true
-                isHit = true;
+                IsHit = true;
             }
         }
 
