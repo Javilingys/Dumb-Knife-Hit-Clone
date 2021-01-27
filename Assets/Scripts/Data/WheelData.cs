@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Level
+public class WheelData
 {
-    public int knifeCount = 1;
-
+    public float speed;
+    public Sprite wheelSprite;
 }

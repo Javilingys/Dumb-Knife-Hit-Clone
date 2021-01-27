@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelsScriptableObject : MonoBehaviour
+public class Wheel : MonoBehaviour
 {
     [SerializeField]
-    private List<Level> levels;
+    private WheelData wheelData; // TODO: set outside
 }

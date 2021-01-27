@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4eb75bb62fa03e4bb7d58ce4089b7de, type: 3}
+  m_Name: LevelsDataSO
+  m_EditorClassIdentifier: 
+  levels:
+  - levelName: Level 1
+    knifeCount: 1
+    chanceOfAppleSpawn: 0.25
+    wheelData:
+      speed: 20
+      wheelSprite: {fileID: 21300000, guid: 778e4a945730fb44bb6d9a3175afcd64, type: 3}
