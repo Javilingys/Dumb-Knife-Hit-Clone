@@ -7,5 +7,7 @@ public class LevelData
     public int knifeCount;
     [Range(0f, 1f)]
     public float chanceOfAppleSpawn;
+    [Range(1, 3)]
+    public int knifesSpawnCount;
     public WheelData wheelData;
 }

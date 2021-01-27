@@ -11,11 +11,17 @@ namespace KnifeHitClone.Misc
             return new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
         }
 
+        // Inverse function of GerVectorFromAngle
         public static float GetAngleFromVector(Vector3 vector)
         {
             float radians = Mathf.Atan2(vector.y, vector.x);
             float degress = radians * Mathf.Rad2Deg;
             return degress;
+        }
+
+        public static Vector3 GetVectorFromAngle(float angle)
+        {
+            return new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad), Mathf.Cos(angle * Mathf.Deg2Rad));
         }
     }
 }
