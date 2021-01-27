@@ -58,7 +58,7 @@ namespace KnifeHitClone.Core
             // If knife already was launched - return
             if (wasLaunch == true) return;
             // Set vertical speed of our knife
-            rigidBody.velocity = new Vector2(0f, Vector2.up.y * speed);
+            rigidBody.AddForce(new Vector2(0, 1f * speed), ForceMode2D.Impulse);
             // Mark knife as launched
             wasLaunch = true;
         }
