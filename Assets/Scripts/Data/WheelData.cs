@@ -8,6 +8,7 @@ namespace KnifeHitClone.Data
     {
         public float speed;
         public Sprite wheelSprite;
+        public GameObject destryoedWheelPrefab;
         [Range(0f, 1f)]
         public float chanceOfAppleSpawn = .25f;
         [Range(1, 3)]

@@ -6,16 +6,13 @@ using UnityEngine;
 
 namespace KnifeHitClone.Game
 {
-    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(KnifeRigidBodyHandler))]
     public class Knife : MonoBehaviour
     {
         public event Action OnRelease;
         public event Action OnWheelHit;
 
-        [SerializeField]
-        private float speed = 30f;
-
-        private Rigidbody2D myRigidBody;
+        private KnifeRigidBodyHandler rigidBodyHandler;
         private bool isReleased;
         private bool isHit;
 
@@ -24,7 +21,7 @@ namespace KnifeHitClone.Game
 
         private void Awake()
         {
-            myRigidBody = GetComponent<Rigidbody2D>();
+            rigidBodyHandler = GetComponent<KnifeRigidBodyHandler>();
         }
 
         private void Update()
@@ -48,10 +45,18 @@ namespace KnifeHitClone.Game
             }
         }
 
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag(Tags.KNIFE) && !IsHit)
+            {
+                IsHit = true;
+                rigidBodyHandler.ForceBehaviour(new Vector2(UnityEngine.Random.Range(-1f, 1f), -1f));
+            }
+        }
+
         public void StopKnife()
         {
-            myRigidBody.isKinematic = true;
-            myRigidBody.velocity = Vector2.zero;
+            rigidBodyHandler.StopKnife();
             isHit = true;
         }
 
@@ -60,8 +65,13 @@ namespace KnifeHitClone.Game
             if (!isReleased && !isHit)
             {
                 isReleased = true;
-                myRigidBody.AddForce(Vector2.up * speed, ForceMode2D.Impulse);
+                rigidBodyHandler.LaunchKnife();
             }
+        }
+
+        public void ForceBehaviour(Vector2 forceDir)
+        {
+            rigidBodyHandler.ForceBehaviour(forceDir);
         }
     }
 }

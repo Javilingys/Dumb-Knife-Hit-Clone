@@ -25,9 +25,10 @@ namespace KnifeHitClone.Game
 
         [Header("Inner Components")]
         [SerializeField]
-        private AvatarRenderer wheelRenderer;
+        private WheelRenderer wheelRenderer;
 
         private List<Knife> knifes;
+        private GameObject destroyedPrefab = null;
 
         #region Unity Methods
         private void Awake()
@@ -35,9 +36,19 @@ namespace KnifeHitClone.Game
             knifes = new List<Knife>();
         }
 
+        private void OnEnable()
+        {
+            KnifeSpawner.OnListEmpty += DestroyWheel;
+        }
+
         private void Update()
         {
             RotateWheel();
+        }
+
+        private void OnDisable()
+        {
+            KnifeSpawner.OnListEmpty -= DestroyWheel;
         }
         #endregion
 
@@ -45,6 +56,7 @@ namespace KnifeHitClone.Game
         public void InitWheel(WheelData wheelData)
         {
             this.wheelData = wheelData;
+            this.destroyedPrefab = wheelData.destryoedWheelPrefab;
             wheelRenderer.SetSprite(wheelData.wheelSprite);
             SpawnApples();
             SpawnKnifes();
@@ -128,6 +140,20 @@ namespace KnifeHitClone.Game
         private void RotateWheel()
         {
             transform.Rotate(new Vector3(0, 0, wheelData.speed * Time.deltaTime));
+        }
+
+        private void DestroyWheel()
+        {
+            Instantiate(destroyedPrefab, transform.position, Quaternion.identity);
+
+            foreach (Knife knife in knifes)
+            {
+                Vector2 dir = knife.transform.position - transform.position;
+                knife.transform.SetParent(null);
+                knife.ForceBehaviour(dir);
+            }
+
+            Destroy(gameObject);
         }
         #endregion
     }

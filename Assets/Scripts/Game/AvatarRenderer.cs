@@ -7,9 +7,9 @@ namespace KnifeHitClone.Game
     [RequireComponent(typeof(SpriteRenderer))]
     public class AvatarRenderer : MonoBehaviour
     {
-        private SpriteRenderer spriteRenderer;
+        protected SpriteRenderer spriteRenderer;
 
-        private void Awake()
+        protected void Awake()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
         }

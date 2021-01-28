@@ -7,6 +7,8 @@ namespace KnifeHitClone.Game
 {
     public class KnifeSpawner : MonoBehaviour
     {
+        public static event Action OnListEmpty;
+
         [SerializeField]
         private Transform spawnPoint;
         [SerializeField]
@@ -51,7 +53,7 @@ namespace KnifeHitClone.Game
             }
             else
             {
-                Debug.Log("List is Empty");
+                OnListEmpty?.Invoke();
             }
         }
 
