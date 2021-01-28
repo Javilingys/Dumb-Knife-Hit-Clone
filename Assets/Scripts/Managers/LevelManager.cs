@@ -13,6 +13,7 @@ namespace KnifeHitClone.Managers
         private LevelsDataSetSO levelsDataSet = null;
 
         private WheelSpawner wheelSpawner;
+        private KnifeSpawner knifeSpawner;
 
         #region Unity Methods
         protected override void Awake()
@@ -21,6 +22,7 @@ namespace KnifeHitClone.Managers
             if (Instance == this)
             {
                 wheelSpawner = FindObjectOfType<WheelSpawner>();
+                knifeSpawner = FindObjectOfType<KnifeSpawner>();
             }
         }
 
@@ -34,6 +36,7 @@ namespace KnifeHitClone.Managers
         public void StartFirstLevel()
         {
             wheelSpawner.SpawnWheel(levelsDataSet.GetWheelDataByIndex(0));
+            knifeSpawner.InitKnifeSpawner(levelsDataSet.GetKnifeCountByIndex(0));
         }
         #endregion
 

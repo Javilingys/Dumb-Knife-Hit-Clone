@@ -9,6 +9,9 @@ namespace KnifeHitClone.Game
     [RequireComponent(typeof(Rigidbody2D))]
     public class Knife : MonoBehaviour
     {
+        public event Action OnRelease;
+        public event Action OnWheelHit;
+
         [SerializeField]
         private float speed = 30f;
 
@@ -37,6 +40,7 @@ namespace KnifeHitClone.Game
             if (collision.CompareTag(Tags.WHEEL) && !IsHit)
             {
                 collision.GetComponent<Wheel>().KnifeHit(this);
+                OnWheelHit?.Invoke();
             }
             else if (collision.CompareTag(Tags.APPLE))
             {
