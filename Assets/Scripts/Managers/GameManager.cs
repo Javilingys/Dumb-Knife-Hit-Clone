@@ -11,29 +11,50 @@ namespace KnifeHitClone.Managers
         public static event Action<int> OnScoreChanged;
 
         //private bool isGameOver;
-        private int maxScore;
-        private int score;
+        private int currentScore;
         private int currentStage;
 
         public int Score 
         {
-            get => score;
+            get => currentScore;
             set 
             {
-                score = value;
-                if (score > MaxScore)
+                currentScore = value;
+                if (currentScore > DataManager.Instance.MaxScore)
                 {
-                    MaxScore = score;
+                    DataManager.Instance.MaxScore = currentScore;
                 }
-                OnScoreChanged?.Invoke(score);
+                OnScoreChanged?.Invoke(currentScore);
             }
         }
-        public int CurrentStage { get => currentStage; set => currentStage = value; }
-        public int MaxScore { get => maxScore; set => maxScore = value; }
+
+        public int CurrentStage
+        {
+            get => currentStage;
+            set
+            {
+                currentStage = value;
+                if (currentStage > DataManager.Instance.MaxStage)
+                {
+                    DataManager.Instance.MaxStage = currentStage;
+                }
+            }
+        }
+
 
         protected override void Awake()
         {
             base.Awake();
+        }
+
+        private void Start()
+        {
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            
         }
     }
 }
