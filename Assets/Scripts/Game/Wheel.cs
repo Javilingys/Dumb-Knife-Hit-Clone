@@ -50,11 +50,11 @@ namespace KnifeHitClone.Game
             SpawnKnifes();
         }
 
-        // Call from UnityEvent on the KnifeCollisionDetector component
         public void KnifeHit(Knife knife)
         {
             knife.StopKnife();
             knife.transform.SetParent(knifeParent);
+            knifes.Add(knife);
         } 
         #endregion
 

@@ -14,9 +14,9 @@ namespace KnifeHitClone.Data
             return levels[level].wheelData;
         }
 
-        public WheelData GetWheelSpriteByIndex(int level)
+        public int GetKnifeCountByIndex(int level)
         {
-            return levels[level].wheelData;
+            return levels[level].knifeCount;
         }
     }
 }
