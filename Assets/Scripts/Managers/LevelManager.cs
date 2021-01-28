@@ -4,6 +4,7 @@ using UnityEngine;
 using KnifeHitClone.Misc;
 using KnifeHitClone.Game;
 using KnifeHitClone.Data;
+using KnifeHitClone.UI;
 
 namespace KnifeHitClone.Managers
 {
@@ -25,11 +26,6 @@ namespace KnifeHitClone.Managers
                 knifeSpawner = FindObjectOfType<KnifeSpawner>();
             }
         }
-
-        private void Start()
-        {
-            StartFirstLevel();
-        }
         #endregion
 
         #region Public Methods
@@ -37,6 +33,7 @@ namespace KnifeHitClone.Managers
         {
             wheelSpawner.SpawnWheel(levelsDataSet.GetWheelDataByIndex(0));
             knifeSpawner.InitKnifeSpawner(levelsDataSet.GetKnifeCountByIndex(0));
+            GameMenu.Instance.SetStartKnifesSet(levelsDataSet.GetKnifeCountByIndex(0));
         }
         #endregion
 

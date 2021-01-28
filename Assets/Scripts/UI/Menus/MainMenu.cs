@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using KnifeHitClone.Managers;
+using KnifeHitClone.Game;
 
 namespace KnifeHitClone.UI
 {
@@ -40,7 +41,8 @@ namespace KnifeHitClone.UI
 
         public void OnPlayPressed()
         {
-
+            GameMenu.Open();
+            LevelLoader.LoadNextLevel();
         }
 
         // open the SettingsMenu

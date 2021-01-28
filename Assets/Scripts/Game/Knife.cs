@@ -9,7 +9,7 @@ namespace KnifeHitClone.Game
     [RequireComponent(typeof(KnifeRigidBodyHandler))]
     public class Knife : MonoBehaviour
     {
-        public event Action OnRelease;
+        public static event Action OnRelease;
         public event Action OnWheelHit;
 
         private KnifeRigidBodyHandler rigidBodyHandler;
@@ -66,6 +66,7 @@ namespace KnifeHitClone.Game
             {
                 isReleased = true;
                 rigidBodyHandler.LaunchKnife();
+                OnRelease?.Invoke();
             }
         }
 

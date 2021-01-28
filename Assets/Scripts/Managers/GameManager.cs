@@ -28,7 +28,7 @@ namespace KnifeHitClone.Managers
             }
         }
 
-        public int CurrentStage
+        public int Stage
         {
             get => currentStage;
             set
@@ -45,16 +45,13 @@ namespace KnifeHitClone.Managers
         protected override void Awake()
         {
             base.Awake();
+            currentScore = 0;
+            currentStage = 1;
         }
 
         private void Start()
         {
-            LoadData();
-        }
-
-        private void LoadData()
-        {
-            
+            LevelManager.Instance.StartFirstLevel();
         }
     }
 }
