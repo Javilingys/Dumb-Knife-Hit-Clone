@@ -24,7 +24,7 @@ namespace KnifeHitClone.Data
             soundEnable = true;
             vibrationEnable = true;
             maxScore = 0;
-            maxStage = 0;
+            maxStage = 1;
             appleCount = 0;
 
             hashValue = String.Empty;

@@ -1,3 +1,4 @@
+using KnifeHitClone.Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -58,8 +59,8 @@ namespace KnifeHitClone.Game
             rb.AddForce(forceDirction * force, ForceMode2D.Impulse);
             rb.AddTorque(torqgue);
 
-
-            Destroy(gameObject, 1.5f);
+            // Depend on GameManager. It's bad, but it simple way for synchronize.
+            Destroy(gameObject, GameManager.Instance.TimeToDestroyObjects);
         }
     }
 }

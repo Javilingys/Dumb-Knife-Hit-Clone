@@ -18,5 +18,10 @@ namespace KnifeHitClone.Data
         {
             return levels[level].knifeCount;
         }
+
+        public int GetLevelsCount()
+        {
+            return levels.Count;
+        }
     }
 }

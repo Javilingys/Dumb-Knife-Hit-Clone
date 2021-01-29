@@ -35,6 +35,20 @@ namespace KnifeHitClone.Managers
             knifeSpawner.InitKnifeSpawner(levelsDataSet.GetKnifeCountByIndex(0));
             GameMenu.Instance.SetStartKnifesSet(levelsDataSet.GetKnifeCountByIndex(0));
         }
+
+        public void StartAnotherLevel(int stage)
+        {
+            if (stage < levelsDataSet.GetLevelsCount())
+            {
+                wheelSpawner.SpawnWheel(levelsDataSet.GetWheelDataByIndex(stage));
+                knifeSpawner.InitKnifeSpawner(levelsDataSet.GetKnifeCountByIndex(stage));
+                GameMenu.Instance.SetStartKnifesSet(levelsDataSet.GetKnifeCountByIndex(stage));
+            }
+            else
+            {
+                // Start End Game Screen
+            }
+        }
         #endregion
 
         #region Private Methods

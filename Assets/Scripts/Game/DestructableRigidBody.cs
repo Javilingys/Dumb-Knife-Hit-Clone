@@ -1,3 +1,4 @@
+using KnifeHitClone.Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -41,6 +42,7 @@ public class DestructableRigidBody : MonoBehaviour
         rb.AddForce(forceDirction * force, ForceMode2D.Impulse);
         rb.AddTorque(torqgue);
 
-        Destroy(transform.parent.gameObject, 1.5f);
+        // Depend on GameManager. It's bad, but it simple way for synchronize.
+        Destroy(transform.parent.gameObject, GameManager.Instance.TimeToDestroyObjects);
     }
 }

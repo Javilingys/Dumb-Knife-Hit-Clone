@@ -1,5 +1,6 @@
 using KnifeHitClone.Data;
 using KnifeHitClone.Misc;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ namespace KnifeHitClone.Managers
 {
     public class DataManager : SingletonMonobehaviour<DataManager>
     {
+        public static event Action OnAppleChange;
+
         private SaveData _saveData;
         private JsonSaver _jsonSaver;
 
@@ -39,7 +42,11 @@ namespace KnifeHitClone.Managers
         public int AppleCount
         {
             get { return _saveData.appleCount; }
-            set { _saveData.appleCount = value; }
+            set 
+            {
+                _saveData.appleCount = value;
+                OnAppleChange.Invoke();
+            }
         }
 
         // initialize SaveData and JsonSaver objects

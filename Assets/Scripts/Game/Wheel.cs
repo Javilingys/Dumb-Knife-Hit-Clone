@@ -10,6 +10,7 @@ namespace KnifeHitClone.Game
     public class Wheel : MonoBehaviour
     {
         public static event Action OnKnifeHit;
+        public static event Action OnWheelDestroy;
 
         private WheelData wheelData;
 
@@ -156,6 +157,7 @@ namespace KnifeHitClone.Game
                 knife.ForceBehaviour(dir);
             }
 
+            OnWheelDestroy?.Invoke();
             Destroy(gameObject);
         }
         #endregion

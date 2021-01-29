@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 520189454825815598}
   - component: {fileID: 520189454825815599}
   - component: {fileID: 2317184546502100954}
+  - component: {fileID: 320056342604733070}
+  - component: {fileID: 5744755572876236678}
   m_Layer: 0
   m_Name: Buttom
   m_TagString: Untagged
@@ -168,6 +170,42 @@ PolygonCollider2D:
       - {x: 0.84375, y: -2.09375}
       - {x: 1.203125, y: -1.984375}
       - {x: 1.390625, y: -1.921875}
+--- !u!50 &320056342604733070
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520189454825815593}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 5
+  m_LinearDrag: 0.1
+  m_AngularDrag: 0.05
+  m_GravityScale: 1.2
+  m_Material: {fileID: 6200000, guid: eb420a8144f81174ab082453012c58cf, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &5744755572876236678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520189454825815593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb093d397c054eb41930b7ed7292d8d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceDirction: {x: 0, y: 1}
+  force: 20
+  torqgue: 500
 --- !u!1 &520189454913104895
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,8 +250,10 @@ GameObject:
   - component: {fileID: 520189455365639084}
   - component: {fileID: 520189455365639085}
   - component: {fileID: 2462653179998137723}
+  - component: {fileID: 3357783976319411079}
+  - component: {fileID: 5254757962700127591}
   m_Layer: 0
-  m_Name: Wheel1Destroyed_0
+  m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -366,6 +406,42 @@ PolygonCollider2D:
       - {x: -1.8984375, y: -2.1796875}
       - {x: -1.7265625, y: -2.0703125}
       - {x: -1.6796875, y: -2.0234375}
+--- !u!50 &3357783976319411079
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520189455365639087}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 5
+  m_LinearDrag: 0.1
+  m_AngularDrag: 0.05
+  m_GravityScale: 1.2
+  m_Material: {fileID: 6200000, guid: eb420a8144f81174ab082453012c58cf, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &5254757962700127591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520189455365639087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb093d397c054eb41930b7ed7292d8d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceDirction: {x: -400, y: 550}
+  force: 50
+  torqgue: 900
 --- !u!1 &520189455737274867
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,8 +453,10 @@ GameObject:
   - component: {fileID: 520189455737274864}
   - component: {fileID: 520189455737274865}
   - component: {fileID: 7346650907160838508}
+  - component: {fileID: 6049964714297798069}
+  - component: {fileID: 6815796302126780623}
   m_Layer: 0
-  m_Name: Wheel1Destroyed_1
+  m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -527,3 +605,39 @@ PolygonCollider2D:
       - {x: 1, y: -2.3984375}
       - {x: 1.453125, y: -2.3046875}
       - {x: 1.5625, y: -2.3046875}
+--- !u!50 &6049964714297798069
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520189455737274867}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 5
+  m_LinearDrag: 0.1
+  m_AngularDrag: 0.05
+  m_GravityScale: 1.2
+  m_Material: {fileID: 6200000, guid: eb420a8144f81174ab082453012c58cf, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &6815796302126780623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520189455737274867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb093d397c054eb41930b7ed7292d8d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceDirction: {x: 600, y: 500}
+  force: 50
+  torqgue: -900

@@ -14,7 +14,82 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - levelName: Level 1
-    knifeCount: 9
+    knifeCount: 4
+    wheelData:
+      speed: 50
+      wheelSprite: {fileID: 21300000, guid: 778e4a945730fb44bb6d9a3175afcd64, type: 3}
+      destryoedWheelPrefab: {fileID: 22164368225319531, guid: 22f93fbe737e08949bbd84ccc8898281, type: 3}
+      chanceOfAppleSpawn: 1
+      knifesSpawnCount: 3
+      isBoss: 0
+      anglesForAppleSpawn:
+      - 45
+      - 135
+      - 225
+      - 315
+      anglesForKnifeSpawn:
+      - 20
+      - 90
+      - 60
+      - 150
+      - 180
+      - 205
+      - 240
+      - 265
+      - 295
+      - 350
+  - levelName: Level 2
+    knifeCount: 5
+    wheelData:
+      speed: 50
+      wheelSprite: {fileID: 21300000, guid: eac72aa01eeb46741a66e158ebca79d5, type: 3}
+      destryoedWheelPrefab: {fileID: 1473955000392664141, guid: 88f39d1ce51d490468851109123e0fae, type: 3}
+      chanceOfAppleSpawn: 1
+      knifesSpawnCount: 3
+      isBoss: 0
+      anglesForAppleSpawn:
+      - 45
+      - 135
+      - 225
+      - 315
+      anglesForKnifeSpawn:
+      - 20
+      - 90
+      - 60
+      - 150
+      - 180
+      - 205
+      - 240
+      - 265
+      - 295
+      - 350
+  - levelName: Level 3
+    knifeCount: 5
+    wheelData:
+      speed: 50
+      wheelSprite: {fileID: 21300000, guid: a564fb0793932424a8377f40757e119a, type: 3}
+      destryoedWheelPrefab: {fileID: 520189454913104895, guid: edb73711546d285479a97e1ad1bbc726, type: 3}
+      chanceOfAppleSpawn: 1
+      knifesSpawnCount: 3
+      isBoss: 0
+      anglesForAppleSpawn:
+      - 45
+      - 135
+      - 225
+      - 315
+      anglesForKnifeSpawn:
+      - 20
+      - 90
+      - 60
+      - 150
+      - 180
+      - 205
+      - 240
+      - 265
+      - 295
+      - 350
+  - levelName: Level 4
+    knifeCount: 5
     wheelData:
       speed: 50
       wheelSprite: {fileID: 21300000, guid: 778e4a945730fb44bb6d9a3175afcd64, type: 3}
