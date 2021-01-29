@@ -10,6 +10,8 @@ namespace KnifeHitClone.Game
     public class Knife : MonoBehaviour
     {
         public static event Action OnRelease;
+        public static event Action OnAppleHit;
+        // event for rigger spawn next knife
         public event Action OnWheelHit;
 
         private KnifeRigidBodyHandler rigidBodyHandler;
@@ -42,6 +44,7 @@ namespace KnifeHitClone.Game
             else if (collision.CompareTag(Tags.APPLE))
             {
                 collision.GetComponent<Apple>().KnifeHit(this);
+                OnAppleHit?.Invoke();
             }
         }
 

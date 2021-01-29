@@ -26,6 +26,12 @@ namespace KnifeHitClone.UI
         private void OnEnable()
         {
             Knife.OnRelease += UpdateKnifeBar;
+            GameManager.OnScoreChanged += UpdateScoreText;
+        }
+
+        private void UpdateScoreText()
+        {
+            scoreText.text = GameManager.Instance.Score.ToString();
         }
 
         private void Start()

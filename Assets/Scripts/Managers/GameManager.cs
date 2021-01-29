@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using KnifeHitClone.Misc;
 using System;
+using KnifeHitClone.Game;
 
 namespace KnifeHitClone.Managers
 {
     public class GameManager : SingletonMonobehaviour<GameManager>
     {
-        public static event Action<int> OnScoreChanged;
+        public static event Action OnScoreChanged;
 
         //private bool isGameOver;
         private int currentScore;
@@ -24,7 +25,7 @@ namespace KnifeHitClone.Managers
                 {
                     DataManager.Instance.MaxScore = currentScore;
                 }
-                OnScoreChanged?.Invoke(currentScore);
+                OnScoreChanged?.Invoke();
             }
         }
 
@@ -49,9 +50,24 @@ namespace KnifeHitClone.Managers
             currentStage = 1;
         }
 
+        private void OnEnable()
+        {
+            Wheel.OnKnifeHit += Wheel_OnKnifeHit;
+        }
+
         private void Start()
         {
             LevelManager.Instance.StartFirstLevel();
+        }
+
+        private void OnDisable()
+        {
+            Wheel.OnKnifeHit -= Wheel_OnKnifeHit;
+        }
+
+        private void Wheel_OnKnifeHit()
+        {
+            Score++;
         }
     }
 }

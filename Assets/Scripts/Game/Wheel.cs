@@ -9,6 +9,8 @@ namespace KnifeHitClone.Game
 {
     public class Wheel : MonoBehaviour
     {
+        public static event Action OnKnifeHit;
+
         private WheelData wheelData;
 
         [Header("Prefabs")]
@@ -67,6 +69,7 @@ namespace KnifeHitClone.Game
             knife.StopKnife();
             knife.transform.SetParent(knifeParent);
             knifes.Add(knife);
+            OnKnifeHit?.Invoke();
         } 
         #endregion
 
