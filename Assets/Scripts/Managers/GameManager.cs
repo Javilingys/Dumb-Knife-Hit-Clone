@@ -4,18 +4,22 @@ using UnityEngine;
 using KnifeHitClone.Misc;
 using System;
 using KnifeHitClone.Game;
+using KnifeHitClone.UI;
 
 namespace KnifeHitClone.Managers
 {
     public class GameManager : SingletonMonobehaviour<GameManager>
     {
+        // Trigger if current score changes. Need for UI (GameMenuUI)
         public static event Action OnScoreChanged;
+        // Trugger if current stage is changed. Need for UI (GameMenuUI)
         public static event Action OnStageChanged;
 
         //private bool isGameOver;
         private int currentScore;
         private int currentStage;
 
+        // reference time for synchronize destruction knife and wheel and spaw only after destroy all objects
         private float timeToDestroyObjects = 1.5f;
         public float TimeToDestroyObjects { get => timeToDestroyObjects; private set => timeToDestroyObjects = value; }
 
@@ -59,6 +63,12 @@ namespace KnifeHitClone.Managers
             Wheel.OnKnifeHit += Wheel_OnKnifeHit;
             Wheel.OnWheelDestroy += Wheel_OnWheelDestroy;
             Knife.OnAppleHit += Knife_OnAppleHit;
+            Knife.OnDeathKnifeHit += OpenLoseMenu;
+        }
+
+        private void OpenLoseMenu()
+        {
+            StartCoroutine(nameof(OpenLoseMenuRoutine));
         }
 
         private void Wheel_OnWheelDestroy()
@@ -69,8 +79,15 @@ namespace KnifeHitClone.Managers
 
         private IEnumerator StartNextStage()
         {
-            yield return new WaitForSeconds(timeToDestroyObjects);
+            yield return new WaitForSeconds(timeToDestroyObjects + 0.001f);
             LevelManager.Instance.StartAnotherLevel(currentStage - 1);
+        }
+
+        private IEnumerator OpenLoseMenuRoutine()
+        {
+            yield return new WaitForSeconds(timeToDestroyObjects + 0.001f);
+            DataManager.Instance.Save();
+            EndGameMenu.Open();
         }
 
         private void Start()
@@ -83,6 +100,7 @@ namespace KnifeHitClone.Managers
             Wheel.OnKnifeHit -= Wheel_OnKnifeHit;
             Wheel.OnWheelDestroy -= Wheel_OnWheelDestroy;
             Knife.OnAppleHit -= Knife_OnAppleHit;
+            Knife.OnDeathKnifeHit -= OpenLoseMenu;
         }
 
         private void Wheel_OnKnifeHit()

@@ -11,6 +11,8 @@ namespace KnifeHitClone.Game
     {
         public static event Action OnRelease;
         public static event Action OnAppleHit;
+        // Event which trigger only if Knife hit another Knife (Game Lose)
+        public static event Action OnDeathKnifeHit;
         // event for rigger spawn next knife
         public event Action OnWheelHit;
 
@@ -54,6 +56,7 @@ namespace KnifeHitClone.Game
             {
                 IsHit = true;
                 rigidBodyHandler.ForceBehaviour(new Vector2(UnityEngine.Random.Range(-1f, 1f), -1f));
+                OnDeathKnifeHit?.Invoke();
             }
         }
 

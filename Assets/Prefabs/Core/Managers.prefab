@@ -46,7 +46,7 @@ MonoBehaviour:
   mainMenuPrefab: {fileID: 5874606582429056950, guid: 3d93efc49dc36db42bd76700ba4b1a39, type: 3}
   settingsMenuPrefab: {fileID: 8440289462096912057, guid: faf79c44987a4b74bb1dfdbddd92b834, type: 3}
   gameMenuPrefab: {fileID: 8981668620405019040, guid: 20300731b5ac2714990e36300f94529e, type: 3}
-  winScreenPrefab: {fileID: 0}
+  winScreenPrefab: {fileID: 3842300163640783821, guid: 63d032699c98ace4bb672886a06eb2f2, type: 3}
   menuParent: {fileID: 0}
 --- !u!1 &7977641098669226010
 GameObject:

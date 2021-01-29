@@ -296,6 +296,7 @@ GameObject:
   - component: {fileID: 625558197}
   - component: {fileID: 625558196}
   - component: {fileID: 271763906}
+  - component: {fileID: 8985039765970556669}
   m_Layer: 5
   m_Name: StageScorePanel
   m_TagString: Untagged
@@ -389,6 +390,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!225 &8985039765970556669
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625558194}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &712973594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,6 +1023,7 @@ GameObject:
   - component: {fileID: 1315874409}
   - component: {fileID: 1315874411}
   - component: {fileID: 1315874410}
+  - component: {fileID: 6215217021431331903}
   m_Layer: 5
   m_Name: HeaderPanel
   m_TagString: Untagged
@@ -1076,6 +1090,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &6215217021431331903
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315874408}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1537205222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1429,6 +1455,7 @@ GameObject:
   - component: {fileID: 1835384990}
   - component: {fileID: 1835384992}
   - component: {fileID: 1835384991}
+  - component: {fileID: 5368839791945801429}
   m_Layer: 5
   m_Name: KnifeImgPanel
   m_TagString: Untagged
@@ -1494,6 +1521,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &5368839791945801429
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835384989}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1870196985
 GameObject:
   m_ObjectHideFlags: 0
@@ -1639,6 +1678,7 @@ GameObject:
   - component: {fileID: 1888556453}
   - component: {fileID: 1888556455}
   - component: {fileID: 1888556454}
+  - component: {fileID: 4696645883049770997}
   m_Layer: 5
   m_Name: SettingPanel
   m_TagString: Untagged
@@ -1704,6 +1744,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &4696645883049770997
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888556452}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2093836166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,6 +1767,7 @@ GameObject:
   - component: {fileID: 2093836167}
   - component: {fileID: 2093836169}
   - component: {fileID: 2093836168}
+  - component: {fileID: 4280417700650339607}
   m_Layer: 5
   m_Name: ApplePanel
   m_TagString: Untagged
@@ -1781,6 +1834,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &4280417700650339607
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093836166}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &5874606582429056947
 GameObject:
   m_ObjectHideFlags: 0
