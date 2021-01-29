@@ -322,7 +322,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 42, y: 367.25415}
+  m_AnchoredPosition: {x: 26, y: 294}
   m_SizeDelta: {x: 121.1642, y: 1011.3835}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &3252592384147238580
@@ -381,7 +381,7 @@ MonoBehaviour:
     m_Top: 20
     m_Bottom: 20
   m_ChildAlignment: 7
-  m_Spacing: 10
+  m_Spacing: 5
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 3252592384644678704}
   - component: {fileID: 3252592384644678711}
   m_Layer: 5
-  m_Name: KnifeTxt
+  m_Name: StageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -498,7 +498,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -2}
+  m_AnchoredPosition: {x: 0, y: 25}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3252592384644678704
@@ -633,7 +633,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 735}
+  m_AnchoredPosition: {x: 0, y: 751}
   m_SizeDelta: {x: 845.718, y: 153.3478}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3252592384734120063
@@ -926,3 +926,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knifePrefabUI: {fileID: 5838126497519440839, guid: b620636cce726d649a488deef0750031, type: 3}
   knifesPanel: {fileID: 3252592384147238537}
+  appleText: {fileID: 3252592382836147011}
+  scoreText: {fileID: 8162046006907975372}
+  stageText: {fileID: 3252592384644678711}

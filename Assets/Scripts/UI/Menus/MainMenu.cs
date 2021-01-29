@@ -41,8 +41,13 @@ namespace KnifeHitClone.UI
 
         public void OnPlayPressed()
         {
+            StartCoroutine(nameof(LoadGame));
+        }
+
+        private IEnumerator LoadGame()
+        {
+            yield return LevelLoader.LoadNextLevel();
             GameMenu.Open();
-            LevelLoader.LoadNextLevel();
         }
 
         // open the SettingsMenu

@@ -26,7 +26,7 @@ namespace KnifeHitClone.Managers
         }
 
         // loads a level by index
-        public static void LoadLevel(int levelIndex)
+        public static IEnumerator LoadLevel(int levelIndex)
         {
             // if the index is valid...
             if (levelIndex >= 0 && levelIndex < SceneManager.sceneCountInBuildSettings)
@@ -38,7 +38,7 @@ namespace KnifeHitClone.Managers
                 }
 
                 // load the scene by index
-                SceneManager.LoadScene(levelIndex);
+                yield return SceneManager.LoadSceneAsync(levelIndex);
             }
             else
             {
@@ -53,13 +53,12 @@ namespace KnifeHitClone.Managers
         }
 
         // loads the next scene in the BuildSettings, wraps back to MainMenu if we run out of scenes
-        public static void LoadNextLevel()
+        public static IEnumerator LoadNextLevel()
         {
             int nextSceneIndex = (SceneManager.GetActiveScene().buildIndex + 1)
                 % SceneManager.sceneCountInBuildSettings;
             nextSceneIndex = Mathf.Clamp(nextSceneIndex, mainMenuIndex, nextSceneIndex);
-            LoadLevel(nextSceneIndex);
-
+            yield return LoadLevel(nextSceneIndex);
         }
 
         // loads the MainMenu level

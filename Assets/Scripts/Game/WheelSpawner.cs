@@ -14,7 +14,7 @@ namespace KnifeHitClone.Game
 
         public void SpawnWheel(WheelData wheelData)
         {
-            Wheel wheel = Instantiate(prefab);
+            Wheel wheel = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
             wheel.InitWheel(wheelData);
         }
     }

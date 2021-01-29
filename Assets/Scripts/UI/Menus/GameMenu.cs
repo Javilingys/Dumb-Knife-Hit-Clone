@@ -3,6 +3,8 @@ using KnifeHitClone.Misc;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using KnifeHitClone.Managers;
 
 namespace KnifeHitClone.UI
 {
@@ -12,12 +14,25 @@ namespace KnifeHitClone.UI
         private SpriteToggler knifePrefabUI;
         [SerializeField]
         private GameObject knifesPanel;
+        [SerializeField]
+        private TextMeshProUGUI appleText;
+        [SerializeField]
+        private TextMeshProUGUI scoreText;
+        [SerializeField]
+        private TextMeshProUGUI stageText;
 
         private Queue<SpriteToggler> knifes = new Queue<SpriteToggler>();
 
         private void OnEnable()
         {
             Knife.OnRelease += UpdateKnifeBar;
+        }
+
+        private void Start()
+        {
+            appleText.text = DataManager.Instance.AppleCount.ToString();
+            scoreText.text = GameManager.Instance.Score.ToString();
+            stageText.text = $"STAGE {GameManager.Instance.Stage}";
         }
 
         private void OnDisable()
