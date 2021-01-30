@@ -26,6 +26,11 @@ namespace KnifeHitClone.UI
             base.Awake();
         }
 
+        private void OnEnable()
+        {
+
+        }
+
         private void Start()
         {
             LoadData();

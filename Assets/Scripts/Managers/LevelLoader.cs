@@ -62,9 +62,9 @@ namespace KnifeHitClone.Managers
         }
 
         // loads the MainMenu level
-        public static void LoadMainMenuLevel()
+        public static IEnumerator LoadMainMenuLevel()
         {
-            LoadLevel(mainMenuIndex);
+            yield return LoadLevel(mainMenuIndex);
         }
     }
 }

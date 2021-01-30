@@ -29,6 +29,26 @@ namespace KnifeHitClone.UI
             GameManager.OnScoreChanged += UpdateScoreText;
             GameManager.OnStageChanged += GameManager_OnStageChanged;
             DataManager.OnAppleChange += DataManager_OnAppleChange;
+
+            if (DataManager.Instance != null && GameManager.Instance != null)
+            {
+                appleText.text = DataManager.Instance.AppleCount.ToString();
+                scoreText.text = GameManager.Instance.Score.ToString();
+                stageText.text = $"STAGE {GameManager.Instance.Stage}";
+            }
+        }
+
+        private void Start()
+        {
+
+        }
+
+        private void OnDisable()
+        {
+            Knife.OnRelease -= UpdateKnifeBar;
+            GameManager.OnScoreChanged -= UpdateScoreText;
+            GameManager.OnStageChanged -= GameManager_OnStageChanged;
+            DataManager.OnAppleChange -= DataManager_OnAppleChange;
         }
 
         private void GameManager_OnStageChanged()
@@ -44,21 +64,6 @@ namespace KnifeHitClone.UI
         private void UpdateScoreText()
         {
             scoreText.text = GameManager.Instance.Score.ToString();
-        }
-
-        private void Start()
-        {
-            appleText.text = DataManager.Instance.AppleCount.ToString();
-            scoreText.text = GameManager.Instance.Score.ToString();
-            stageText.text = $"STAGE {GameManager.Instance.Stage}";
-        }
-
-        private void OnDisable()
-        {
-            Knife.OnRelease -= UpdateKnifeBar;
-            GameManager.OnScoreChanged -= UpdateScoreText;
-            GameManager.OnStageChanged -= GameManager_OnStageChanged;
-            DataManager.OnAppleChange -= DataManager_OnAppleChange;
         }
 
         public void SetStartKnifesSet(int knifeCount)
@@ -79,6 +84,8 @@ namespace KnifeHitClone.UI
             {
                 Destroy(child.gameObject);
             }
+
+            knifes.Clear();
         }
 
         private void UpdateKnifeBar()
