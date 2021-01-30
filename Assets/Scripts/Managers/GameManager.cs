@@ -86,7 +86,7 @@ namespace KnifeHitClone.Managers
             LevelManager.Instance.StartAnotherLevel(currentStage - 1);
         }
 
-        private IEnumerator OpenLoseMenuRoutine()
+        public IEnumerator OpenLoseMenuRoutine()
         {
             yield return new WaitForSeconds(timeToDestroyObjects + 0.001f);
             DataManager.Instance.Save();

@@ -48,6 +48,81 @@ MonoBehaviour:
   gameMenuPrefab: {fileID: 8981668620405019040, guid: 20300731b5ac2714990e36300f94529e, type: 3}
   winScreenPrefab: {fileID: 3842300163640783821, guid: 63d032699c98ace4bb672886a06eb2f2, type: 3}
   menuParent: {fileID: 0}
+--- !u!1 &2659347265344965767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7574748399147850872}
+  - component: {fileID: 4374239338063424785}
+  - component: {fileID: 5410417904313313795}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7574748399147850872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2659347265344965767}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7977641098669226011}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4374239338063424785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2659347265344965767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fde6d51b698ec4b99cf3d4765aa1ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5410417904313313795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2659347265344965767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06e22d0d9795e2649a74d20955560261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - soundName: AppleHit
+    sound: 0
+    audioClip: {fileID: 8300000, guid: 732ae4015112f354f8edd2861b70646c, type: 3}
+  - soundName: Button
+    sound: 1
+    audioClip: {fileID: 8300000, guid: c243009c6235eec44b3fa3c35e25849b, type: 3}
+  - soundName: GameOver
+    sound: 2
+    audioClip: {fileID: 8300000, guid: eadf976017e309f459bf257e4e2d5d1c, type: 3}
+  - soundName: KnifeFire
+    sound: 3
+    audioClip: {fileID: 8300000, guid: 29c8f30d4438f6f4e8448a316d3b1c45, type: 3}
+  - soundName: KnifeHit
+    sound: 4
+    audioClip: {fileID: 8300000, guid: 7ac296aa39538984980301e4bea707af, type: 3}
+  - soundName: WheelHit
+    sound: 5
+    audioClip: {fileID: 8300000, guid: d6136722686d9ce478da7ed2ad239d61, type: 3}
 --- !u!1 &7977641098669226010
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,6 +153,7 @@ Transform:
   m_Children:
   - {fileID: 7977641098953548394}
   - {fileID: 579262334}
+  - {fileID: 7574748399147850872}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

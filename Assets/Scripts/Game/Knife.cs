@@ -1,3 +1,4 @@
+using KnifeHitClone.Managers;
 using KnifeHitClone.Misc;
 using System;
 using System.Collections;
@@ -42,11 +43,15 @@ namespace KnifeHitClone.Game
             {
                 collision.GetComponent<Wheel>().KnifeHit(this);
                 OnWheelHit?.Invoke();
+
+                AudioManager.Instance.PlaySound(AudioManager.Sound.WheelHit);
             }
             else if (collision.CompareTag(Tags.APPLE))
             {
                 collision.GetComponent<Apple>().KnifeHit(this);
                 OnAppleHit?.Invoke();
+
+                AudioManager.Instance.PlaySound(AudioManager.Sound.AppleHit);
             }
         }
 
@@ -57,6 +62,8 @@ namespace KnifeHitClone.Game
                 IsHit = true;
                 rigidBodyHandler.ForceBehaviour(new Vector2(UnityEngine.Random.Range(-1f, 1f), -1f));
                 OnDeathKnifeHit?.Invoke();
+
+                AudioManager.Instance.PlaySound(AudioManager.Sound.KnifeHit);
             }
         }
 
@@ -73,6 +80,8 @@ namespace KnifeHitClone.Game
                 isReleased = true;
                 rigidBodyHandler.LaunchKnife();
                 OnRelease?.Invoke();
+
+                AudioManager.Instance.PlaySound(AudioManager.Sound.KnifeFire);
             }
         }
 

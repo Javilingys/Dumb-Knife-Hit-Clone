@@ -55,6 +55,8 @@ namespace KnifeHitClone.UI
                 SetSoundBtnActive(true);
                 DataManager.Instance.SoundEnable = true;
             }
+
+            AudioManager.Instance.PlaySound(AudioManager.Sound.Button);
         }
 
         public void ToggleVibroBtn()
@@ -69,10 +71,13 @@ namespace KnifeHitClone.UI
                 SetVibroBtnActive(true);
                 DataManager.Instance.VibrationEnable = true;
             }
+
+            AudioManager.Instance.PlaySound(AudioManager.Sound.Button);
         }
 
         public override void OnBackPressed()
         {
+            AudioManager.Instance.PlaySound(AudioManager.Sound.Button);
             DataManager.Instance.Save();
             base.OnBackPressed();
         }

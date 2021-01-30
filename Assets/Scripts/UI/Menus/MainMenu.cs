@@ -49,6 +49,7 @@ namespace KnifeHitClone.UI
 
         public void OnPlayPressed()
         {
+            AudioManager.Instance.PlaySound(AudioManager.Sound.Button);
             StartCoroutine(nameof(LoadGame));
         }
 
@@ -61,6 +62,7 @@ namespace KnifeHitClone.UI
         // open the SettingsMenu
         public void OnSettingsPressed()
         {
+            AudioManager.Instance.PlaySound(AudioManager.Sound.Button);
             SettingsMenu.Open();
         }
 

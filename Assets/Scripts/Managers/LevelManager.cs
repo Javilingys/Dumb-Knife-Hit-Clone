@@ -46,7 +46,7 @@ namespace KnifeHitClone.Managers
             }
             else
             {
-                // Start End Game Screen
+                StartCoroutine(GameManager.Instance.OpenLoseMenuRoutine());
             }
         }
         #endregion
