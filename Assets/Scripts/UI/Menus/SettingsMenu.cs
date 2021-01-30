@@ -21,6 +21,11 @@ namespace KnifeHitClone.UI
         [SerializeField]
         private GameObject vibroOff;
 
+        private void OnEnable()
+        {
+            LoadData();
+        }
+
         private void Start()
         {
             LoadData();
@@ -28,11 +33,14 @@ namespace KnifeHitClone.UI
 
         private void LoadData()
         {
-            DataManager.Instance.Load();
+            if (DataManager.Instance != null)
+            {
+                DataManager.Instance.Load();
 
-            appleText.text = DataManager.Instance.AppleCount.ToString();
-            SetSoundBtnActive(DataManager.Instance.SoundEnable);
-            SetVibroBtnActive(DataManager.Instance.VibrationEnable);
+                appleText.text = DataManager.Instance.AppleCount.ToString();
+                SetSoundBtnActive(DataManager.Instance.SoundEnable);
+                SetVibroBtnActive(DataManager.Instance.VibrationEnable);
+            }
         }
 
         public void ToggleSoundsBtn()

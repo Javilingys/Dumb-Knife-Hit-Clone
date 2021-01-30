@@ -28,7 +28,7 @@ namespace KnifeHitClone.UI
 
         private void OnEnable()
         {
-
+            LoadData();
         }
 
         private void Start()
@@ -38,10 +38,13 @@ namespace KnifeHitClone.UI
 
         private void LoadData()
         {
-            DataManager.Instance.Load();
-            appleText.text = DataManager.Instance.AppleCount.ToString();
-            stageText.text = $"STAGE {DataManager.Instance.MaxStage}";
-            scoreText.text = $"SCORE {DataManager.Instance.MaxScore}";
+            if (DataManager.Instance != null)
+            {
+                DataManager.Instance.Load();
+                appleText.text = DataManager.Instance.AppleCount.ToString();
+                stageText.text = $"STAGE {DataManager.Instance.MaxStage}";
+                scoreText.text = $"SCORE {DataManager.Instance.MaxScore}";
+            }
         }
 
         public void OnPlayPressed()
