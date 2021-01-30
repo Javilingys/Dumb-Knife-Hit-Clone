@@ -13,6 +13,8 @@ namespace KnifeHitClone.Game
         private Transform spawnPoint;
         [SerializeField]
         private Knife knifePrefab;
+        [SerializeField]
+        private GameObject hitEffectPrefab;
 
         private int countForSpawn = 1;
 
@@ -36,6 +38,7 @@ namespace KnifeHitClone.Game
                 Knife knife = Instantiate(knifePrefab, spawnPoint.position, Quaternion.identity);
                 knife.gameObject.SetActive(false);
                 knife.OnWheelHit += SpawnNextKnife;
+                Instantiate(hitEffectPrefab, knife.transform);
                 spawnedKnifes.Add(knife);
             }
             if (spawnedKnifes.Count > 0)

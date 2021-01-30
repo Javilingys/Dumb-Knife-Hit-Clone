@@ -32,6 +32,7 @@ namespace KnifeHitClone.Managers
                 if (currentScore > DataManager.Instance.MaxScore)
                 {
                     DataManager.Instance.MaxScore = currentScore;
+                    isBestScore = true;
                 }
                 OnScoreChanged?.Invoke();
             }
@@ -50,6 +51,8 @@ namespace KnifeHitClone.Managers
                 OnStageChanged?.Invoke();
             }
         }
+
+        public bool isBestScore = false;
 
         protected override void Awake()
         {

@@ -117,6 +117,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5e73443a148804cb0eb472a935c87b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appleText: {fileID: 7265533441925407020}
+  stageText: {fileID: 7229749170418823881}
+  scoreText: {fileID: 7229749169842735513}
+  newBest: {fileID: 7229749169553289160}
 --- !u!1 &5434996287711767936
 GameObject:
   m_ObjectHideFlags: 0
@@ -1856,9 +1860,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: KnifeHitClone.UI.MainMenu, Assembly-CSharp
-        m_MethodName: OnPlayPressed
+      - m_Target: {fileID: 3842300163640783821}
+        m_TargetAssemblyTypeName: KnifeHitClone.UI.EndGameMenu, Assembly-CSharp
+        m_MethodName: OnRestartPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -47,9 +47,9 @@ namespace KnifeHitClone.Managers
         }
 
         // reloads the currently active scene
-        public static void ReloadLevel()
+        public static IEnumerator ReloadLevel()
         {
-            LoadLevel(SceneManager.GetActiveScene().name);
+            yield return LoadLevel(SceneManager.GetActiveScene().buildIndex);
         }
 
         // loads the next scene in the BuildSettings, wraps back to MainMenu if we run out of scenes
